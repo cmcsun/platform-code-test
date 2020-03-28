@@ -1,6 +1,6 @@
-CSDUJ[15:43]raina@rainadock~/platform-code-test$ rake
+CSDUJ[16:42]raina@rainadock~/platform-code-test$ rake
 rspec .
-...................................
+....................................
 
 Deprecation Warnings:
 
@@ -14,5 +14,5 @@ deprecation warnings into errors, giving you the full backtrace.
 
 1 deprecation warning total
 
-Finished in 0.09865 seconds (files took 0.48984 seconds to load)
-35 examples, 0 failures
+Finished in 0.03498 seconds (files took 0.19023 seconds to load)
+36 examples, 0 failures
