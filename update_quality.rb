@@ -1,49 +1,48 @@
 require 'award'
 
 def update_quality(awards)
+  
   awards.each do |award|
-    if award.name != 'Blue First' && award.name != 'Blue Compare'
-      if award.quality > 0
-        if award.name != 'Blue Distinction Plus'
-          award.quality -= 1
-        end
+    
+    case
+    
+    when award.name == 'NORMAL ITEM' && award.quality > 0 then award.quality -= 1
+    when award.name == 'Blue Star' && award.quality > 0 then award.quality -= 2
+    when award.name == 'Blue First' && award.quality < 50 then award.quality += 1
+    when award.name == 'Blue Compare'
+      
+      #case
+      
+      case
+      
+      when award.expires_in > 10 && award.quality < 50 then award.quality += 1
+      when award.expires_in < 6 && award.quality < 50 then award.quality += 3
+      when award.expires_in < 11 && award.quality < 50 then award.quality += 2
+      
       end
-    else
-      if award.quality < 50
-        award.quality += 1
-        if award.name == 'Blue Compare'
-          if award.expires_in < 11
-            if award.quality < 50
-              award.quality += 1
-            end
-          end
-          if award.expires_in < 6
-            if award.quality < 50
-              award.quality += 1
-            end
-          end
-        end
-      end
+    
     end
-    if award.name != 'Blue Distinction Plus'
-      award.expires_in -= 1
+
+    case
+    
+    when award.name != 'Blue Distinction Plus' then award.expires_in -= 1
+    
     end
+    
     if award.expires_in < 0
-      if award.name != 'Blue First'
-        if award.name != 'Blue Compare'
-          if award.quality > 0
-            if award.name != 'Blue Distinction Plus'
-              award.quality -= 1
-            end
-          end
-        else
-          award.quality = award.quality - award.quality
-        end
-      else
-        if award.quality < 50
-          award.quality += 1
-        end
+      
+      case
+      
+      when award.name == 'NORMAL ITEM' && award.quality > 0 then award.quality -= 1
+      when award.name == 'Blue Star' && award.quality > 0 then award.quality -= 2
+      when award.name == 'Blue First' && award.quality < 50 then award.quality += 1
+      when award.name == 'Blue Compare' then award.quality = award.quality - award.quality
+      
       end
+
+    
     end
+
   end
+
 end
